@@ -1,0 +1,6 @@
+*.xcodeproj/xcuserdata/**
+*.xcodeproj/project.xcworkspace/xcuserdata/**
+Pods/**
+SonyConnect.xcworkspace/xcuserdata/**
+.DS_Store
+.idea
