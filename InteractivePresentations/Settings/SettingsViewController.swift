@@ -8,18 +8,27 @@
 
 import UIKit
 
+protocol SettingsNavigationDelegate: class {
+    func dismiss()
+}
+
 class SettingsViewController: UITableViewController {
     
     lazy var presenter = SettingsPresenter(interactor: SettingsInteractor())
     private var settings = [String]()
+    weak var navigationDelegate: SettingsNavigationDelegate?
     
     override func viewDidLoad() {
         loadSettings()
+        navigationItem.title = presenter.settingsTitle
     }
     
     func loadSettings() {
         settings = presenter.loadSettings()
         tableView.reloadData()
+    }
+    @IBAction func didTapDone(_ sender: Any) {
+        navigationDelegate?.dismiss()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -8,7 +8,11 @@
 
 struct SettingsPresenter {
     private let interactor: SettingsInteractor
-    
+
+    var settingsTitle: String {
+        return "Settings"
+    }
+
     init(interactor: SettingsInteractor) {
         self.interactor = interactor
     }

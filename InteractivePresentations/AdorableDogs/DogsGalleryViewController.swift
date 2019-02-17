@@ -15,9 +15,19 @@ class DogsGalleryViewController: UIViewController {
     
     private var dogs = [Dog]()
     private let cellIdentifier = "photoCell"
+
     lazy var dogPresenter = DogsPresenter(interactor: DogsInteractor())
+    lazy var settingsWireframe = SettingsWireFrame()
+    lazy var photoDetailsWireframe: PhotoDetailsWireFrame = {
+        var navigationController = self.navigationController ?? UINavigationController(rootViewController: self)
+        return PhotoDetailsWireFrame(navigationController: navigationController)
+    } ()
+
     override func viewDidLoad() {
-        collectionView.register(UINib(nibName: "DogPhotoCell", bundle: Bundle.main), forCellWithReuseIdentifier: cellIdentifier)
+        collectionView.register(
+            UINib(nibName: "DogPhotoCell", bundle: Bundle.main),
+            forCellWithReuseIdentifier: cellIdentifier
+        )
         loadDogs()
     }
 
@@ -29,10 +39,7 @@ class DogsGalleryViewController: UIViewController {
     }
 
     @IBAction func didTapSettings(_ sender: Any) {
-        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController
-        if let viewController = viewController {
-            present(viewController, animated: true, completion: nil)
-        }
+        settingsWireframe.showSettings(onViewController: self)
     }
     
     func calculateCellSize() -> CGSize {
@@ -67,13 +74,7 @@ extension DogsGalleryViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard dogs.count > indexPath.row else { return }
-        
-        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PhotoDetailViewController") as? PhotoDetailViewController
-        
-        if let viewController = viewController {
-            viewController.photoURL = dogs[indexPath.row].pictureURL
-            navigationController?.pushViewController(viewController, animated: true)
-        }
+        photoDetailsWireframe.showPhotoDetails(photoURL: dogs[indexPath.row].pictureURL)
     }
     
 }

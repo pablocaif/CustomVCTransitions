@@ -96,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="2194" y="793"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Settings-->
         <scene sceneID="U7o-vs-edB">
             <objects>
-                <tableViewController storyboardIdentifier="SettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GP7-2q-JAg" customClass="SettingsViewController" customModule="InteractivePresentations" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SettingsViewController" title="Settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GP7-2q-JAg" customClass="SettingsViewController" customModule="InteractivePresentations" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fpF-re-LvT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,11 +128,17 @@
                             <outlet property="delegate" destination="GP7-2q-JAg" id="6Sg-O5-o31"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="vrc-bi-Nvn"/>
+                    <navigationItem key="navigationItem" id="vrc-bi-Nvn">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="tmk-kH-Jeh">
+                            <connections>
+                                <action selector="didTapDone:" destination="GP7-2q-JAg" id="vip-58-kLo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2b5-ko-VuF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2932" y="-77.58620689655173"/>
+            <point key="canvasLocation" x="3874.4000000000001" y="-77.58620689655173"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9HE-MM-SFt">
@@ -151,6 +157,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Wx-ua-tY9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="133.59999999999999" y="792.95352323838085"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JQV-av-wE5">
+            <objects>
+                <navigationController storyboardIdentifier="SettingsNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZJ4-OE-HEb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TG8-gp-ctt">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="GP7-2q-JAg" kind="relationship" relationship="rootViewController" id="odN-hN-VAW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tcb-Wr-2gi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2932" y="-77.58620689655173"/>
         </scene>
     </scenes>
 </document>
