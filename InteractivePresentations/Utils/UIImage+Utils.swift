@@ -16,13 +16,9 @@ extension UIImage {
             scale = size.height / targetSize.height
         }
         let croppedImsize = CGSize(width: size.width/scale, height: size.height/scale)
-        let croppedImrect =
-            CGRect(origin: CGPoint(x: (targetSize.width - croppedImsize.width)/2.0,
-                                   y: (targetSize.height - croppedImsize.height)/2.0),
-                   size: croppedImsize)
-        return UIGraphicsImageRenderer(size: croppedImsize).image { [weak self ]_ in
-            self?.draw(in:  CGRect(origin: .zero, size: croppedImsize))
-            //self?.draw(at: CGPoint(x:-croppedImrect.origin.x, y:-croppedImrect.origin.y))
+        return UIGraphicsImageRenderer(size: croppedImsize)
+            .image { [weak self ] _ in
+                self?.draw(in:  CGRect(origin: .zero, size: croppedImsize))
         }
     }
 }

@@ -10,7 +10,7 @@ struct SettingsInteractor {
     
     func loadSettings() -> [String] {
         var settings = [String]()
-        for setting in 1...20 {
+        for setting in 1...50 {
             settings.append("Setting \(setting)")
         }
         

@@ -11,13 +11,14 @@ import CoreGraphics
 
 class DogsGalleryViewController: UIViewController {
 
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet var collectionView: UICollectionView!
+    private static var collectionViewTag = 1000
     
     private var dogs = [Dog]()
     private let cellIdentifier = "photoCell"
 
     lazy var dogPresenter = DogsPresenter(interactor: DogsInteractor())
-    lazy var settingsWireframe = SettingsWireFrame()
+    lazy var settingsWireframe = SettingsWireframe()
     lazy var photoDetailsWireframe: PhotoDetailsWireFrame = {
         var navigationController = self.navigationController ?? UINavigationController(rootViewController: self)
         return PhotoDetailsWireFrame(navigationController: navigationController)
@@ -29,6 +30,8 @@ class DogsGalleryViewController: UIViewController {
             forCellWithReuseIdentifier: cellIdentifier
         )
         loadDogs()
+        collectionView.tag = DogsGalleryViewController.collectionViewTag
+        navigationItem.title = "Gallery"
     }
 
     func loadDogs() {
@@ -97,4 +100,10 @@ extension DogsGalleryViewController: UICollectionViewDelegateFlowLayout {
         return 5
     }
 
+}
+
+extension DogsGalleryViewController: CollectionViewProvider {
+    var collectionViewKey: Int {
+        return DogsGalleryViewController.collectionViewTag
+    }
 }

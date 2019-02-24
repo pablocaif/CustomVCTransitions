@@ -17,8 +17,16 @@
 		6E0D2AA8221812FF008CB223 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0D2AA6221812FF008CB223 /* LaunchScreen.storyboard */; };
 		6E0D2AB3221812FF008CB223 /* InteractivePresentationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0D2AB2221812FF008CB223 /* InteractivePresentationsTests.swift */; };
 		6E0D2ABE221812FF008CB223 /* InteractivePresentationsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0D2ABD221812FF008CB223 /* InteractivePresentationsUITests.swift */; };
+		6E265411221CA6A800A763CA /* PhotoZoomInAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E265410221CA6A800A763CA /* PhotoZoomInAnimatedTransition.swift */; };
+		6E265413221CA6C200A763CA /* PhotoZoomOutAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E265412221CA6C200A763CA /* PhotoZoomOutAnimatedTransition.swift */; };
+		6E35F41922214F8E00E27BE6 /* UIImageView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35F41822214F8E00E27BE6 /* UIImageView+Utils.swift */; };
+		6E35F41D2222527400E27BE6 /* ViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35F41C2222527400E27BE6 /* ViewProviders.swift */; };
 		6EAEBEB6221A0AE50036BBF1 /* SettingsWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAEBEB5221A0AE50036BBF1 /* SettingsWireframe.swift */; };
 		6EAEBEB8221A10E40036BBF1 /* PhotoDetailsWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAEBEB7221A10E40036BBF1 /* PhotoDetailsWireFrame.swift */; };
+		6EAEBEBB221AAC820036BBF1 /* SwipeDownInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAEBEBA221AAC820036BBF1 /* SwipeDownInteractiveTransition.swift */; };
+		6EAEBEBD221AADA40036BBF1 /* SlideDownAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAEBEBC221AADA40036BBF1 /* SlideDownAnimatedTransition.swift */; };
+		6EAEBEBF221AAE490036BBF1 /* SlideUpAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAEBEBE221AAE490036BBF1 /* SlideUpAnimatedTransition.swift */; };
+		6EAEBEC1221AAF240036BBF1 /* InteractiveModalPresentationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAEBEC0221AAF240036BBF1 /* InteractiveModalPresentationType.swift */; };
 		6EB383802218FEEE00421C2D /* DogsGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB3837F2218FEEE00421C2D /* DogsGalleryViewController.swift */; };
 		6EB38386221910D200421C2D /* DogPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EB38384221910D200421C2D /* DogPhotoCell.xib */; };
 		6EB38388221915B800421C2D /* DogPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB38387221915B800421C2D /* DogPhotoCell.swift */; };
@@ -63,8 +71,16 @@
 		6E0D2AB9221812FF008CB223 /* InteractivePresentationsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InteractivePresentationsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E0D2ABD221812FF008CB223 /* InteractivePresentationsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractivePresentationsUITests.swift; sourceTree = "<group>"; };
 		6E0D2ABF221812FF008CB223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E265410221CA6A800A763CA /* PhotoZoomInAnimatedTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoZoomInAnimatedTransition.swift; sourceTree = "<group>"; };
+		6E265412221CA6C200A763CA /* PhotoZoomOutAnimatedTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoZoomOutAnimatedTransition.swift; sourceTree = "<group>"; };
+		6E35F41822214F8E00E27BE6 /* UIImageView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utils.swift"; sourceTree = "<group>"; };
+		6E35F41C2222527400E27BE6 /* ViewProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProviders.swift; sourceTree = "<group>"; };
 		6EAEBEB5221A0AE50036BBF1 /* SettingsWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWireframe.swift; sourceTree = "<group>"; };
 		6EAEBEB7221A10E40036BBF1 /* PhotoDetailsWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailsWireFrame.swift; sourceTree = "<group>"; };
+		6EAEBEBA221AAC820036BBF1 /* SwipeDownInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDownInteractiveTransition.swift; sourceTree = "<group>"; };
+		6EAEBEBC221AADA40036BBF1 /* SlideDownAnimatedTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideDownAnimatedTransition.swift; sourceTree = "<group>"; };
+		6EAEBEBE221AAE490036BBF1 /* SlideUpAnimatedTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpAnimatedTransition.swift; sourceTree = "<group>"; };
+		6EAEBEC0221AAF240036BBF1 /* InteractiveModalPresentationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveModalPresentationType.swift; sourceTree = "<group>"; };
 		6EB3837F2218FEEE00421C2D /* DogsGalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogsGalleryViewController.swift; sourceTree = "<group>"; };
 		6EB38384221910D200421C2D /* DogPhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DogPhotoCell.xib; sourceTree = "<group>"; };
 		6EB38387221915B800421C2D /* DogPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogPhotoCell.swift; sourceTree = "<group>"; };
@@ -147,6 +163,7 @@
 		6E0D2A9C221812FD008CB223 /* InteractivePresentations */ = {
 			isa = PBXGroup;
 			children = (
+				6EAEBEB9221AABAF0036BBF1 /* CustomPresentations */,
 				6EB3838C221962FD00421C2D /* PhotoDetail */,
 				6EB38389221947A900421C2D /* Utils */,
 				6E0529122218359E00A45516 /* Dogs */,
@@ -179,10 +196,32 @@
 			path = InteractivePresentationsUITests;
 			sourceTree = "<group>";
 		};
+		6E26540F221CA46200A763CA /* CustomTransitioning */ = {
+			isa = PBXGroup;
+			children = (
+				6E265410221CA6A800A763CA /* PhotoZoomInAnimatedTransition.swift */,
+				6E265412221CA6C200A763CA /* PhotoZoomOutAnimatedTransition.swift */,
+				6E35F41C2222527400E27BE6 /* ViewProviders.swift */,
+			);
+			path = CustomTransitioning;
+			sourceTree = "<group>";
+		};
+		6EAEBEB9221AABAF0036BBF1 /* CustomPresentations */ = {
+			isa = PBXGroup;
+			children = (
+				6EAEBEBA221AAC820036BBF1 /* SwipeDownInteractiveTransition.swift */,
+				6EAEBEBC221AADA40036BBF1 /* SlideDownAnimatedTransition.swift */,
+				6EAEBEBE221AAE490036BBF1 /* SlideUpAnimatedTransition.swift */,
+				6EAEBEC0221AAF240036BBF1 /* InteractiveModalPresentationType.swift */,
+			);
+			path = CustomPresentations;
+			sourceTree = "<group>";
+		};
 		6EB38389221947A900421C2D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				6EB3838A221947C500421C2D /* UIImage+Utils.swift */,
+				6E35F41822214F8E00E27BE6 /* UIImageView+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -190,6 +229,7 @@
 		6EB3838C221962FD00421C2D /* PhotoDetail */ = {
 			isa = PBXGroup;
 			children = (
+				6E26540F221CA46200A763CA /* CustomTransitioning */,
 				6EB3838D2219633800421C2D /* PhotoDetailViewController.swift */,
 				6EAEBEB7221A10E40036BBF1 /* PhotoDetailsWireFrame.swift */,
 			);
@@ -331,16 +371,24 @@
 			files = (
 				6E0529152218E45700A45516 /* DosPresenter.swift in Sources */,
 				6E0D2A9E221812FD008CB223 /* AppDelegate.swift in Sources */,
+				6EAEBEBB221AAC820036BBF1 /* SwipeDownInteractiveTransition.swift in Sources */,
 				6E05291122182C1500A45516 /* Dog.swift in Sources */,
 				6EB38388221915B800421C2D /* DogPhotoCell.swift in Sources */,
+				6E35F41D2222527400E27BE6 /* ViewProviders.swift in Sources */,
 				6EB3838B221947C500421C2D /* UIImage+Utils.swift in Sources */,
 				6EAEBEB6221A0AE50036BBF1 /* SettingsWireframe.swift in Sources */,
 				6EB3839422197E5600421C2D /* SettingsInteractor.swift in Sources */,
+				6EAEBEBD221AADA40036BBF1 /* SlideDownAnimatedTransition.swift in Sources */,
 				6EB383802218FEEE00421C2D /* DogsGalleryViewController.swift in Sources */,
+				6E265411221CA6A800A763CA /* PhotoZoomInAnimatedTransition.swift in Sources */,
 				6EB3838E2219633800421C2D /* PhotoDetailViewController.swift in Sources */,
 				6EAEBEB8221A10E40036BBF1 /* PhotoDetailsWireFrame.swift in Sources */,
+				6E265413221CA6C200A763CA /* PhotoZoomOutAnimatedTransition.swift in Sources */,
+				6EAEBEC1221AAF240036BBF1 /* InteractiveModalPresentationType.swift in Sources */,
 				6E05290D2218289600A45516 /* DogsInteractor.swift in Sources */,
 				6EB3839022197DB500421C2D /* SettingsViewController.swift in Sources */,
+				6EAEBEBF221AAE490036BBF1 /* SlideUpAnimatedTransition.swift in Sources */,
+				6E35F41922214F8E00E27BE6 /* UIImageView+Utils.swift in Sources */,
 				6EB3839222197E3E00421C2D /* SettingsPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
