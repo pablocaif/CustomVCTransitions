@@ -11,7 +11,7 @@ import UIKit
 class PhotoZoomInAnimatedTransition: NSObject {
     private let durationInterval: TimeInterval
 
-    init(durationInterval: TimeInterval = 0.4) {
+    init(durationInterval: TimeInterval = 0.45) {
         self.durationInterval = durationInterval
         super.init()
     }
@@ -62,25 +62,16 @@ extension PhotoZoomInAnimatedTransition: UIViewControllerAnimatedTransitioning {
         imageToAnimate.contentMode = .scaleAspectFill
         transitionContext.containerView.addSubview(imageToAnimate)
 
-        UIView.animateKeyframes(
+        UIView.animate(
             withDuration: durationInterval,
             delay: 0,
-            options: .calculationModeCubic,
+            usingSpringWithDamping: 0.7,
+            initialSpringVelocity: 0.5,
+            options: .curveEaseIn,
             animations: {
-                UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.6) {
-                    fromView.alpha = 0.0
-                    toView.alpha = 1.0
-                    imageToAnimate.frame = destinationFrame
-                    imageToAnimate.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-                }
-
-                UIView.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.2) {
-                    imageToAnimate.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-                }
-
-                UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.2) {
-                    imageToAnimate.transform = CGAffineTransform.identity
-                }
+                fromView.alpha = 0.0
+                toView.alpha = 1.0
+                imageToAnimate.frame = destinationFrame
         }) { _ in
             destinationImageView.isHidden = false
             imageToAnimate.removeFromSuperview()

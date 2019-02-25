@@ -13,7 +13,7 @@ public class SlideUpAnimatedTransition: NSObject {
     private let duration: TimeInterval
     private let percentageToScale: CGFloat
 
-    public init(duration: TimeInterval = 0.3, percentageToScalePresentingView: CGFloat = 0.96) {
+    public init(duration: TimeInterval = 0.4, percentageToScalePresentingView: CGFloat = 0.96) {
         self.duration = duration
         self.percentageToScale = percentageToScalePresentingView
     }
@@ -59,6 +59,8 @@ extension SlideUpAnimatedTransition: UIViewControllerAnimatedTransitioning {
         UIView.animate(
             withDuration: duration,
             delay: 0,
+            usingSpringWithDamping: 0.7,
+            initialSpringVelocity: 0.1,
             options: .curveEaseInOut,
             animations: { [weak self] in
                 guard let strongSelf = self else { return }

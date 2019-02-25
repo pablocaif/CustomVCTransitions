@@ -11,7 +11,7 @@ import UIKit
 class PhotoZoomOutAnimatedTransition: NSObject {
     private let durationInterval: TimeInterval
 
-    init(durationInterval: TimeInterval = 0.25) {
+    init(durationInterval: TimeInterval = 0.35) {
         self.durationInterval = durationInterval
         super.init()
     }
@@ -64,6 +64,8 @@ extension PhotoZoomOutAnimatedTransition: UIViewControllerAnimatedTransitioning 
         UIView.animate(
             withDuration: durationInterval,
             delay: 0,
+            usingSpringWithDamping: 0.7,
+            initialSpringVelocity: 0.5,
             options: .curveEaseInOut,
             animations: {
                 fromView.alpha = 0
