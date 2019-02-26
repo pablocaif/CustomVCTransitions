@@ -37,8 +37,7 @@ class PhotoDetailsWireFrame: NSObject {
 
 extension PhotoDetailsWireFrame: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        guard let zoomOutTransition = animationController as? PhotoZoomOutAnimatedTransition,
-        swipeDownInteractiveTransition.interactionInProgress
+        guard swipeDownInteractiveTransition.interactionInProgress
             else { return nil }
 
         return swipeDownInteractiveTransition
