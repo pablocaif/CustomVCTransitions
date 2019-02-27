@@ -17,6 +17,7 @@
 		6E0D2AA8221812FF008CB223 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0D2AA6221812FF008CB223 /* LaunchScreen.storyboard */; };
 		6E0D2AB3221812FF008CB223 /* CustomVCTransitionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0D2AB2221812FF008CB223 /* CustomVCTransitionsTests.swift */; };
 		6E0D2ABE221812FF008CB223 /* CustomVCTransitionsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0D2ABD221812FF008CB223 /* CustomVCTransitionsUITests.swift */; };
+		6E108FF82225F4DE00273AE3 /* ViewControllerTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E108FF72225F4DE00273AE3 /* ViewControllerTransitionAnimator.swift */; };
 		6E265411221CA6A800A763CA /* PhotoZoomInAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E265410221CA6A800A763CA /* PhotoZoomInAnimatedTransition.swift */; };
 		6E265413221CA6C200A763CA /* PhotoZoomOutAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E265412221CA6C200A763CA /* PhotoZoomOutAnimatedTransition.swift */; };
 		6E35F41922214F8E00E27BE6 /* UIImageView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35F41822214F8E00E27BE6 /* UIImageView+Utils.swift */; };
@@ -71,6 +72,7 @@
 		6E0D2AB9221812FF008CB223 /* CustomVCTransitionsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustomVCTransitionsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E0D2ABD221812FF008CB223 /* CustomVCTransitionsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVCTransitionsUITests.swift; sourceTree = "<group>"; };
 		6E0D2ABF221812FF008CB223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E108FF72225F4DE00273AE3 /* ViewControllerTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTransitionAnimator.swift; sourceTree = "<group>"; };
 		6E265410221CA6A800A763CA /* PhotoZoomInAnimatedTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoZoomInAnimatedTransition.swift; sourceTree = "<group>"; };
 		6E265412221CA6C200A763CA /* PhotoZoomOutAnimatedTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoZoomOutAnimatedTransition.swift; sourceTree = "<group>"; };
 		6E35F41822214F8E00E27BE6 /* UIImageView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utils.swift"; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				6EAEBEBC221AADA40036BBF1 /* SlideDownAnimatedTransition.swift */,
 				6EAEBEBE221AAE490036BBF1 /* SlideUpAnimatedTransition.swift */,
 				6EAEBEC0221AAF240036BBF1 /* InteractiveModalPresentationType.swift */,
+				6E108FF72225F4DE00273AE3 /* ViewControllerTransitionAnimator.swift */,
 			);
 			path = CustomVCTransitions;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				6EB38388221915B800421C2D /* DogPhotoCell.swift in Sources */,
 				6E35F41D2222527400E27BE6 /* ViewProviders.swift in Sources */,
 				6EB3838B221947C500421C2D /* UIImage+Utils.swift in Sources */,
+				6E108FF82225F4DE00273AE3 /* ViewControllerTransitionAnimator.swift in Sources */,
 				6EAEBEB6221A0AE50036BBF1 /* SettingsWireframe.swift in Sources */,
 				6EB3839422197E5600421C2D /* SettingsInteractor.swift in Sources */,
 				6EAEBEBD221AADA40036BBF1 /* SlideDownAnimatedTransition.swift in Sources */,

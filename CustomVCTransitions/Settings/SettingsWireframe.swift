@@ -41,11 +41,7 @@ extension SettingsWireframe: SettingsNavigationDelegate {
 // MARK: - Interactive presentation
 extension SettingsWireframe: InteractiveModalPresentationType {
     func shouldBeginTransition() -> Bool {
-        guard let contentOffset = settingsViewController?.tableView.contentOffset.y
-            else {
-            return false
-        }
-        return contentOffset < -100.0
+        return settingsViewController?.didScrollFarEnoughForDismissal ?? false
     }
     
     //I was trying to add this 2 methods as default implementations to InteractiveModalPresentationType

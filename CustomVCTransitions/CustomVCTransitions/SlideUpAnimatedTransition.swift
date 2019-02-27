@@ -12,6 +12,7 @@ import UIKit
 public class SlideUpAnimatedTransition: NSObject {
     private let duration: TimeInterval
     private let percentageToScale: CGFloat
+    private var animator: UIViewImplicitlyAnimating?
 
     public init(duration: TimeInterval = 0.4, percentageToScalePresentingView: CGFloat = 0.96) {
         self.duration = duration
