@@ -8,32 +8,24 @@
 
 import UIKit
 
-class PhotoZoomInAnimatedTransition: NSObject {
-    private let durationInterval: TimeInterval
+class PhotoZoomInAnimatedTransition: ViewControllerTransitionAnimator {
 
-    init(durationInterval: TimeInterval = 0.45) {
-        self.durationInterval = durationInterval
-        super.init()
-    }
-}
-
-extension PhotoZoomInAnimatedTransition: UIViewControllerAnimatedTransitioning {
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return durationInterval
-    }
-
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    override func createAnimator(for transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
         guard let sourceViewProvider = transitionContext.viewController(forKey: .from) as? CollectionViewProvider,
             let destinationProvier = transitionContext.viewController(forKey: .to) as? ImageViewProvider,
             let fromView = transitionContext.view(forKey: .from),
             let toView = transitionContext.view(forKey: .to)
-            else { return }
+            else {
+                return UIViewPropertyAnimator(duration: 0, timingParameters: UICubicTimingParameters(animationCurve: .easeInOut))
+        }
 
         //Find the cell from where we need to originate the animation
         guard let collectionView = fromView.viewWithTag(sourceViewProvider.collectionViewKey) as? UICollectionView,
             let indexPath = collectionView.indexPathsForSelectedItems?[0],
             let sourceView = collectionView.cellForItem(at: indexPath)
-            else { return }
+            else {
+                return UIViewPropertyAnimator(duration: 0, timingParameters: UICubicTimingParameters(animationCurve: .easeInOut))
+        }
 
         //Prepare to and from view for the animations
         sourceView.isHidden = true
@@ -48,7 +40,9 @@ extension PhotoZoomInAnimatedTransition: UIViewControllerAnimatedTransitioning {
         //Find the image view in the destination view controller and prepare for presentation
         guard let destinationImageView = toView.viewWithTag(destinationProvier.imageViewKey) as? UIImageView,
             let destinationImage = destinationImageView.image
-            else { return }
+            else {
+                return UIViewPropertyAnimator(duration: 0, timingParameters: UICubicTimingParameters(animationCurve: .easeInOut))
+        }
         destinationImageView.frame = toView.frame
         destinationImageView.isHidden = true
 
@@ -62,20 +56,19 @@ extension PhotoZoomInAnimatedTransition: UIViewControllerAnimatedTransitioning {
         imageToAnimate.contentMode = .scaleAspectFill
         transitionContext.containerView.addSubview(imageToAnimate)
 
-        UIView.animate(
-            withDuration: durationInterval,
-            delay: 0,
-            usingSpringWithDamping: 0.7,
-            initialSpringVelocity: 0.5,
-            options: .curveEaseIn,
-            animations: {
+        let animator = UIViewPropertyAnimator(
+            duration: transitionDuration(using: transitionContext),
+            dampingRatio: 0.7) {
                 fromView.alpha = 0.0
                 toView.alpha = 1.0
                 imageToAnimate.frame = destinationFrame
-        }) { _ in
+        }
+        animator.addCompletion { _ in
             destinationImageView.isHidden = false
             imageToAnimate.removeFromSuperview()
             transitionContext.completeTransition(transitionContext.transitionWasCancelled == false)
         }
+        
+        return animator
     }
 }

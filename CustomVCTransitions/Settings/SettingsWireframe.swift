@@ -52,7 +52,7 @@ extension SettingsWireframe: InteractiveModalPresentationType {
     }
 
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return SlideUpAnimatedTransition()
+        return SlideUpAnimatedTransition(duration: 0.4)
     }
 
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {

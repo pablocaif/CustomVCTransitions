@@ -42,7 +42,7 @@ class SlideDownAnimatedTransition: ViewControllerTransitionAnimator {
         //Prepare presenting view for dismissal animation
         toSnapshot.layer.masksToBounds = true
         toSnapshot.clipsToBounds = true
-        let percentageToScale = CGFloat(0.94)
+        let percentageToScale = CGFloat(0.96)
         toSnapshot.layer.setAffineTransform(CGAffineTransform(scaleX: percentageToScale, y: percentageToScale))
 
         //Add views for the animation

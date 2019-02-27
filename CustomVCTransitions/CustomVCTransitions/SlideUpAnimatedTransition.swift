@@ -9,35 +9,26 @@
 import UIKit
 
 ///This Animation controller will produce a slide up animation when presenting modaly a ViewController
-public class SlideUpAnimatedTransition: NSObject {
-    private let duration: TimeInterval
-    private let percentageToScale: CGFloat
-    private var animator: UIViewImplicitlyAnimating?
-
-    public init(duration: TimeInterval = 0.4, percentageToScalePresentingView: CGFloat = 0.96) {
-        self.duration = duration
-        self.percentageToScale = percentageToScalePresentingView
-    }
-}
-
-extension SlideUpAnimatedTransition: UIViewControllerAnimatedTransitioning {
-    public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return duration
-    }
-
-    public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+class SlideUpAnimatedTransition: ViewControllerTransitionAnimator {
+   
+    override func createAnimator(for transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
         //By using snapshots we avoid doing constraints manipulation such as activating and deactivating constraints
         guard let fromViewController = transitionContext.viewController(forKey: .from),
             let fromSnapshot = fromViewController.view.snapshotView(afterScreenUpdates: true),
             let toViewController = transitionContext.viewController(forKey: .to),
             let window = UIApplication.shared.keyWindow
-            else { return }
+            else {
+                return UIViewPropertyAnimator(duration: 0, timingParameters: UICubicTimingParameters(animationCurve: .easeInOut))
+        }
 
         //We need to make sure the presented view has the right size before taking the snapshoot
         //For some reason some times the size is incorrect this fix that issue
         let containerView = transitionContext.containerView
         toViewController.view.frame.size = containerView.frame.size
-        guard let toSnapshot = toViewController.view.snapshotView(afterScreenUpdates: true) else { return }
+        guard let toSnapshot = toViewController.view.snapshotView(afterScreenUpdates: true)
+            else {
+                return UIViewPropertyAnimator(duration: 0, timingParameters: UICubicTimingParameters(animationCurve: .easeInOut))
+        }
 
         //Prepare the presented view for the presentation animation
         let finalFrame = transitionContext.finalFrame(for: toViewController)
@@ -56,24 +47,22 @@ extension SlideUpAnimatedTransition: UIViewControllerAnimatedTransitioning {
         containerView.addSubview(toSnapshot)
 
         let duration = transitionDuration(using: transitionContext)
-
-        UIView.animate(
-            withDuration: duration,
-            delay: 0,
-            usingSpringWithDamping: 0.7,
-            initialSpringVelocity: 0.1,
-            options: .curveEaseInOut,
-            animations: { [weak self] in
-                guard let strongSelf = self else { return }
+        
+        let animator = UIViewPropertyAnimator(
+            duration: duration,
+            dampingRatio: 0.7) {
+                let percentageToScale = CGFloat(0.96)
                 toSnapshot.frame = finalFrame
-                fromSnapshot.layer.setAffineTransform(CGAffineTransform(scaleX: strongSelf.percentageToScale, y: strongSelf.percentageToScale))
-            },
-            completion: { _ in
-                toViewController.view.isHidden = false
-                toSnapshot.removeFromSuperview()
-                transitionContext.completeTransition(transitionContext.transitionWasCancelled == false)
+                fromSnapshot.layer.setAffineTransform(CGAffineTransform(scaleX: percentageToScale, y: percentageToScale))
+                
         }
-        )
+        animator.addCompletion { _ in
+            toViewController.view.isHidden = false
+            toSnapshot.removeFromSuperview()
+            transitionContext.completeTransition(transitionContext.transitionWasCancelled == false)
+        }
+        
+        return animator
     }
 }
 

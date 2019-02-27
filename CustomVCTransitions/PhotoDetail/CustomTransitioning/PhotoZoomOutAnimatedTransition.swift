@@ -8,32 +8,24 @@
 
 import UIKit
 
-class PhotoZoomOutAnimatedTransition: NSObject {
-    private let durationInterval: TimeInterval
+class PhotoZoomOutAnimatedTransition: ViewControllerTransitionAnimator {
 
-    init(durationInterval: TimeInterval = 0.35) {
-        self.durationInterval = durationInterval
-        super.init()
-    }
-}
-
-extension PhotoZoomOutAnimatedTransition: UIViewControllerAnimatedTransitioning {
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return durationInterval
-    }
-
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    override func createAnimator(for transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
         guard let sourceViewProvider = transitionContext.viewController(forKey: .from) as? ImageViewProvider,
             let destinationProvier = transitionContext.viewController(forKey: .to) as? CollectionViewProvider,
             let fromView = transitionContext.view(forKey: .from),
             let toView = transitionContext.view(forKey: .to)
-            else { return }
+            else {
+                return UIViewPropertyAnimator(duration: 0, timingParameters: UICubicTimingParameters(animationCurve: .easeInOut))
+        }
 
         //Find the destination cell for the zoom out animation
         guard let collectionView = toView.viewWithTag(destinationProvier.collectionViewKey) as? UICollectionView,
             let indexPath = collectionView.indexPathsForSelectedItems?[0],
             let destinationView = collectionView.cellForItem(at: indexPath)
-            else { return }
+            else {
+                return UIViewPropertyAnimator(duration: 0, timingParameters: UICubicTimingParameters(animationCurve: .easeInOut))
+        }
 
         //Prepare the from and to view for the animations
         destinationView.isHidden = true
@@ -48,7 +40,9 @@ extension PhotoZoomOutAnimatedTransition: UIViewControllerAnimatedTransitioning 
         //Find the image view in the photo details
         guard let sourceImageView = fromView.viewWithTag(sourceViewProvider.imageViewKey) as? UIImageView,
             let destinationImage = sourceImageView.image
-            else { return }
+            else {
+                return UIViewPropertyAnimator(duration: 0, timingParameters: UICubicTimingParameters(animationCurve: .easeInOut))
+        }
 
         //Find the initial frame for the zoom out animation
         let imageVewInitialFrame = sourceImageView.rectFromDisplayedImage()
@@ -60,19 +54,15 @@ extension PhotoZoomOutAnimatedTransition: UIViewControllerAnimatedTransitioning 
         imageToAnimate.contentMode = .scaleAspectFill
         transitionContext.containerView.addSubview(imageToAnimate)
         sourceImageView.isHidden = true
-
-        UIView.animate(
-            withDuration: durationInterval,
-            delay: 0,
-            usingSpringWithDamping: 0.7,
-            initialSpringVelocity: 0.5,
-            options: .curveEaseInOut,
-            animations: {
+        
+        let animator = UIViewPropertyAnimator(
+            duration: transitionDuration(using: transitionContext),
+            dampingRatio: 0.8) {
                 fromView.alpha = 0
                 toView.alpha = 1
                 imageToAnimate.frame = destinationViewFrame
-
-        }) { _ in
+            }
+        animator.addCompletion { _ in
             if transitionContext.transitionWasCancelled {
                 fromView.alpha = 1
                 toView.alpha = 0
@@ -83,5 +73,7 @@ extension PhotoZoomOutAnimatedTransition: UIViewControllerAnimatedTransitioning 
             imageToAnimate.removeFromSuperview()
             transitionContext.completeTransition(transitionContext.transitionWasCancelled == false)
         }
+        
+        return animator
     }
 }

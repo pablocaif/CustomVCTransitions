@@ -46,9 +46,9 @@ extension PhotoDetailsWireFrame: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         switch operation {
         case .push:
-            return PhotoZoomInAnimatedTransition()
+            return PhotoZoomInAnimatedTransition(duration: 0.5)
         case .pop:
-            return PhotoZoomOutAnimatedTransition()
+            return PhotoZoomOutAnimatedTransition(duration: 0.5)
         default:
             return nil
         }

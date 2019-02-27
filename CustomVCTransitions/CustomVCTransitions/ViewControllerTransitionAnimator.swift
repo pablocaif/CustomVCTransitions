@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewControllerTransitionAnimator:NSObject, UIViewControllerAnimatedTransitioning {
+class ViewControllerTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     var animator: UIViewImplicitlyAnimating?
     let duration: TimeInterval
 
