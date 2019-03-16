@@ -106,4 +106,11 @@ extension DogsGalleryViewController: CollectionViewProvider {
     var collectionViewKey: Int {
         return DogsGalleryViewController.collectionViewTag
     }
+    
+    func findSelectedCell() -> UICollectionViewCell? {
+        guard let indexPaths = collectionView.indexPathsForSelectedItems,
+        indexPaths.count > 0
+        else { return nil }
+        return collectionView.cellForItem(at: indexPaths[0])
+    }
 }

@@ -21,8 +21,7 @@ class PhotoZoomInAnimatedTransition: ViewControllerTransitionAnimator {
 
         //Find the cell from where we need to originate the animation
         guard let collectionView = fromView.viewWithTag(sourceViewProvider.collectionViewKey) as? UICollectionView,
-            let indexPath = collectionView.indexPathsForSelectedItems?[0],
-            let sourceView = collectionView.cellForItem(at: indexPath)
+            let sourceView = sourceViewProvider.findSelectedCell()
             else {
                 return UIViewPropertyAnimator(duration: 0, timingParameters: UICubicTimingParameters(animationCurve: .easeInOut))
         }
